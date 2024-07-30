@@ -5,13 +5,13 @@ import { sendVerificationEmail } from "@/helpers/sendVerificationEmail";
 
 export async function POST(request: Request) {
   await dbConnect();
-
+  console.log("CONNECTED >>>>>>>>>>>>");
   try {
     const { username, email, password } = await request.json();
-
+    console.log("username >>>>>>>>>>", username, email, password);
     const exisitingUserVerifiedByUsername = await UserModel.findOne({
       username,
-      isVerified: name,
+      isVerified: true,
     });
 
     if (exisitingUserVerifiedByUsername) {
